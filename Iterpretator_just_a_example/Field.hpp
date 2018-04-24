@@ -5,7 +5,7 @@
 #include <memory>
 #include <regex>
 #include <sstream>
-#include <ctype.h>
+#include <cctype>
 
 
 using namespace std;
@@ -15,7 +15,8 @@ public:
 	
 	Field(Field* parent = nullptr);
 	void execute(string& line,ifstream&  ifstream_main);
-	int& find_int_variable(const string& name);
+	int find_int_variable(const string& name);
+	int calcuateExpression(const string& maybe_exp);
 private:
 	map<string, int> int_variables;
 	Field* parent;
@@ -24,6 +25,7 @@ private:
 	string deleteAllBlanks(const string& line) const;
 	string getStatementKey(const string& line) const;
 	string getNameOfNewVar(const string& line) const;
+	
 };
 
 

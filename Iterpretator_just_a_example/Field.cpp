@@ -1,6 +1,7 @@
-#include "StatementCreator.hpp"
-#include "Field.hpp"
+
 #include "Statement.hpp"
+#include "Field.hpp"
+#include "StatementCreator.hpp"
 
 
 
@@ -19,11 +20,11 @@ void Field::execute(string& line, ifstream& ifstream_main)
 			Statement* state = StatementCreator::create(key, this);
 			state->invoke(line, ifstream_main);
 			delete state;
-			//return;
+			return;
 		}
 		throw string{ "Error:No such statement" };
 	}
-	else {} /*if (isNewVarFormat(line))
+	else if (isNewVarFormat(line))
 	{
 		string name_of_variable = getNameOfNewVar(line);
 		if (int_variables.find(name_of_variable) == int_variables.end())
@@ -35,11 +36,11 @@ void Field::execute(string& line, ifstream& ifstream_main)
 			throw string{ "Error:two variables with the same name!!!" };
 		}
 
-	}*/
+	}
 }
 
 
-int& Field::find_int_variable(const string& name)
+int Field::find_int_variable(const string& name)
 {
 	if (int_variables.find(name) != int_variables.end())
 	{
@@ -49,7 +50,22 @@ int& Field::find_int_variable(const string& name)
 	{
 		return  parent->find_int_variable(name);
 	}
-	throw string("Error: no shuch variable in the program");
+	throw string("Error: no shuch variable in the program");	
+}
+
+int Field::calcuateExpression(const string& maybe_exp) 
+{
+	try {
+		int val = std::atoi(maybe_exp.c_str());
+		return val;
+	}
+	catch(invalid_argument exo){
+		return find_int_variable(maybe_exp);
+	}
+	catch(...)
+	{
+		throw;
+	}
 }
 
 bool Field::isStatementFormat(const string& line) const

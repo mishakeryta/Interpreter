@@ -1,0 +1,5 @@
+﻿  Field.cpp
+c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\field.cpp(111): warning C4806: '!=': unsafe operation: no value of type 'bool' promoted to type 'char' can equal the given constant
+x64\Debug\Field.obj : warning LNK4042: object specified more than once; extras ignored
+x64\Debug\StatementCreator.obj : warning LNK4042: object specified more than once; extras ignored
+  Iterpretator_just_a_example.vcxproj -> C:\Users\User\source\repos\Iterpretator_just_a_example\x64\Debug\Iterpretator_just_a_example.exe

@@ -8,51 +8,57 @@ Statement* Print_st::create(Field* parent) const
 void Print_st::invoke(string& line, ifstream& ifstream) const
 {
 	int index = 0;
-	while(isblank(line.at(index)))
+	while (isblank(line.at(index)))
 	{
 		++index;
 	}
 	for (int i = 0; i < 6; ++i, ++index);
 	string argument;
-	while(index < line.length() && isblank(line[index]))
+	while (index < line.length() && isblank(line[index]))
 	{
 		++index;
 	}
 	if (line[index] == ')') cout << "\n";
-	if(line[index] == '\"')
+	if (line[index] == '\"')
 	{
-		while (index < line.length() && line[index] != ' \"')
+		++index;
+		while (index < line.length() && line[index] != '\"')
 		{
-			argument+= line[index];
+			argument += line[index];
 			++index;
 		}
-		if(index == line.length() - 1)
+		if (line[index] == '\"')
 		{
-			throw string("Inappropriate format!!!");
+			++index;
+			while (index < line.length())
+			{
+				if (!isblank(line[index]))
+				{
+					if (line[index] == ')')
+					{
+						cout << argument;
+						return;
+					}
+					else
+					{
+						throw string{ "Error with print arguments" };
+					}
+				}
+				++index;
+			}
 		}
 		else
 		{
-			if(line[index] == '\"')
-			{
-				while(index < line.length())
-				{
-					if(!isblank(line[index]))
-					{
-						if(line[index] == ')')
-						{
-							cout << argument;
-							return;
-						}
-						else
-						{
-							throw string{ "Error with print arguments" };
-						}
-					}
-				}
-			}
+			throw string{ "Error with print arguments" };
 		}
 	}
 	else
-	{}
+	{/*
+		string expresion;
+		while(index < line.length())
+		*/
+	}
 }
+
+
 

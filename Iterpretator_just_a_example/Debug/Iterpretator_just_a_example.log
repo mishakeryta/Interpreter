@@ -1,13 +1,10 @@
-﻿  Field.cpp
-c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\field.cpp(61): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\field.cpp(68): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\field.cpp(95): warning C4806: '!=': unsafe operation: no value of type 'bool' promoted to type 'char' can equal the given constant
-c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\field.cpp(103): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\field.cpp(118): warning C4018: '<': signed/unsigned mismatch
-  Field.hpp
-  Generating Code...
+﻿  Print_st.cpp
+c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\print_st.cpp(17): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\print_st.cpp(24): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\print_st.cpp(37): warning C4018: '<': signed/unsigned mismatch
 Debug\Field.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\StatementCreator.obj : warning LNK4042: object specified more than once; extras ignored
-Field.obj : error LNK2019: unresolved external symbol "public: static bool __cdecl StatementCreator::isStatementWith(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?isStatementWith@StatementCreator@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: void __thiscall Field::execute(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,class std::basic_ifstream<char,struct std::char_traits<char> > &)" (?execute@Field@@QAEXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV?$basic_ifstream@DU?$char_traits@D@std@@@3@@Z)
-Field.obj : error LNK2019: unresolved external symbol "public: static class Statement * __cdecl StatementCreator::create(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class Field *)" (?create@StatementCreator@@SAPAVStatement@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVField@@@Z) referenced in function "public: void __thiscall Field::execute(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,class std::basic_ifstream<char,struct std::char_traits<char> > &)" (?execute@Field@@QAEXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV?$basic_ifstream@DU?$char_traits@D@std@@@3@@Z)
+MainProgram.obj : error LNK2019: unresolved external symbol "public: void __thiscall Field::execute(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,class std::basic_ifstream<char,struct std::char_traits<char> > &)" (?execute@Field@@QAEXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV?$basic_ifstream@DU?$char_traits@D@std@@@3@@Z) referenced in function "public: void __thiscall MainField::run(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?run@MainField@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Print_st.obj : error LNK2019: unresolved external symbol "public: __thiscall Field::Field(class Field *)" (??0Field@@QAE@PAV0@@Z) referenced in function "public: __thiscall Print_st::Print_st(class Field *)" (??0Print_st@@QAE@PAVField@@@Z)
+Source.obj : error LNK2001: unresolved external symbol "public: __thiscall Field::Field(class Field *)" (??0Field@@QAE@PAV0@@Z)
 C:\Users\User\source\repos\Iterpretator_just_a_example\Debug\Iterpretator_just_a_example.exe : fatal error LNK1120: 2 unresolved externals

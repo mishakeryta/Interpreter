@@ -1,1 +1,6 @@
+int Det = 12
 print("Detroid")
+ print( )
+print("Detroid2")
+print(123);
+
