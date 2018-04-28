@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Field.hpp" />
+    <ClCompile Include="IfStatement.cpp" />
     <ClCompile Include="MainProgram.cpp" />
     <ClCompile Include="Print_st.cpp" />
     <ClCompile Include="Source.cpp" />

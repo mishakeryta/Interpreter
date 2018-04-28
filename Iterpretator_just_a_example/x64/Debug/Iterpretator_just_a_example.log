@@ -1,5 +1,7 @@
-﻿  Field.cpp
-c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\field.cpp(111): warning C4806: '!=': unsafe operation: no value of type 'bool' promoted to type 'char' can equal the given constant
+﻿  IfStatement.cpp
+  StatementCreator.cpp
+  Generating Code...
 x64\Debug\Field.obj : warning LNK4042: object specified more than once; extras ignored
 x64\Debug\StatementCreator.obj : warning LNK4042: object specified more than once; extras ignored
-  Iterpretator_just_a_example.vcxproj -> C:\Users\User\source\repos\Iterpretator_just_a_example\x64\Debug\Iterpretator_just_a_example.exe
+MainProgram.obj : error LNK2019: unresolved external symbol "public: void __cdecl Field::execute(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,class std::basic_ifstream<char,struct std::char_traits<char> > &)" (?execute@Field@@QEAAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV?$basic_ifstream@DU?$char_traits@D@std@@@3@@Z) referenced in function "public: void __cdecl MainField::run(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?run@MainField@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+C:\Users\User\source\repos\Iterpretator_just_a_example\x64\Debug\Iterpretator_just_a_example.exe : fatal error LNK1120: 1 unresolved externals

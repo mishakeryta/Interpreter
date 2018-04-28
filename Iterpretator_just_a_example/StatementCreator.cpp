@@ -1,6 +1,7 @@
-#include "StatementCreator.hpp"
 #include "Statement.hpp"
 #include "Print_st.hpp"
+//#include "IfStatement.hpp"
+#include "StatementCreator.hpp"
 
 map<string,Statement*> StatementCreator::statements;
 
@@ -16,7 +17,7 @@ Statement* StatementCreator::create(const string& key,Field* parent)
 
 	if (isStatementWith(key))
 	{
-		return statements["print"]->create(parent);
+		return statements[key]->create(parent);
 	}
 	return nullptr;
 }
@@ -26,5 +27,6 @@ void StatementCreator::initStatements()
 	if (statements.empty())
 	{
 		statements["print"] = new Print_st{ nullptr };
+		//statements["if"] = new IfStatement{ nullptr };
 	}
 }

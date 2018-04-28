@@ -10,7 +10,7 @@ Field::Field(Field* parent)
 	this->parent = parent;
 }
 
-void Field::execute(string& line, ifstream& ifstream_main)
+void Field::execute(string& line, istream& ifstream_main)
 {
 	if (isStatementFormat(line))
 	{
@@ -29,7 +29,7 @@ void Field::execute(string& line, ifstream& ifstream_main)
 		string name_of_variable = getNameOfNewVar(line);
 		if (int_variables.find(name_of_variable) == int_variables.end())
 		{
-			int_variables[name_of_variable] = 34;
+			int_variables[name_of_variable] = calculateExpression(findExpresionInAssigment(line));
 		}
 		else
 		{
@@ -53,14 +53,21 @@ int Field::find_int_variable(const string& name)
 	throw string("Error: no shuch variable in the program");	
 }
 
-int Field::calcuateExpression(const string& maybe_exp) 
+void Field::setVariableInt(const string & name)
 {
+	//TO DO
+}
+
+int Field::calculateExpression(const string& maybe_exp)  
+{
+	string may_exp  = deleteAllBlanks(maybe_exp);
 	try {
-		int val = std::atoi(maybe_exp.c_str());
+		if (!isdigit(may_exp[0])) throw invalid_argument{ "" };
+		int val = std::atoi(may_exp.c_str());
 		return val;
 	}
 	catch(invalid_argument exo){
-		return find_int_variable(maybe_exp);
+		return find_int_variable(may_exp);
 	}
 	catch(...)
 	{
@@ -90,7 +97,7 @@ bool Field::isStatementFormat(const string& line) const
 
 bool Field::isNewVarFormat(const string& line) const
 {
-	ifstream input{ line };
+	istringstream input{ line };
 	string type;
 	input >> type;
 	if (type != "int")
@@ -98,17 +105,17 @@ bool Field::isNewVarFormat(const string& line) const
 		return false;
 	}
 	while (!input.eof() && isblank(input.peek())) input.get();
-	if (input.eof() || !isalpha(input.get())) return false;
+	if (input.eof() || !isalpha(input.peek())) return false;
 	while (true)
 	{
 		if (input.eof()) return false;
 		char ch = input.get();
 		if (isblank(ch)) break;
 		if (ch == '=') return true;
-		if (!isalpha(ch) || !isdigit(ch)) return false;
+		if (!isalpha(ch) && !isdigit(ch)) return false;
 	}
 	while (!input.eof() && isblank(input.peek())) input.get();
-	if (input.eof() || !input.get() != '=') return false;
+	if (input.eof() || input.get() != '=') return false;
 	return true;
 }
 
@@ -145,7 +152,7 @@ string Field::getStatementKey(const string& line) const
 
 string Field::getNameOfNewVar(const string& line) const
 {
-	fstream input{ line };
+	istringstream input{ line };
 	string buff;
 	input >> buff;
 	buff = "";
@@ -154,3 +161,20 @@ string Field::getNameOfNewVar(const string& line) const
 
 }
 
+string Field::findExpresionInAssigment(const string& line) {
+	int index = 0;
+	while (index < line.length()) {
+		if (line[index] == '=') {
+			++index;
+			string result;
+			while (index < line.length())
+			{
+				result+= line[index];
+				++index;
+			}
+			return result;
+		}
+		++index;
+	}
+	throw string("Not assigment");
+}

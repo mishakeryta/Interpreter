@@ -1,6 +1,8 @@
 int Det = 12
-print("Detroid")
- print( )
-print("Detroid2")
-print(123);
+print("Detroid  jdhfjhdf")
+print(Det)
+print()
+print(12)
+int val = 99
+print(val)
 

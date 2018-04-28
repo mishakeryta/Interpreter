@@ -1,0 +1,7 @@
+﻿  StatementCreator.cpp
+Release\Field.obj : warning LNK4042: object specified more than once; extras ignored
+Release\StatementCreator.obj : warning LNK4042: object specified more than once; extras ignored
+  Generating code
+  All 500 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Iterpretator_just_a_example.vcxproj -> C:\Users\User\source\repos\Iterpretator_just_a_example\Release\Iterpretator_just_a_example.exe

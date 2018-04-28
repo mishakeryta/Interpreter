@@ -1,10 +1,16 @@
 ﻿  Print_st.cpp
 c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\print_st.cpp(17): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\print_st.cpp(24): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\print_st.cpp(29): warning C4018: '<': signed/unsigned mismatch
 c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\print_st.cpp(37): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpretator_just_a_example\iterpretator_just_a_example\print_st.cpp(62): warning C4018: '<': signed/unsigned mismatch
+  Statement.hpp
+  StatementCreator.cpp
+  Generating Code...
 Debug\Field.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\StatementCreator.obj : warning LNK4042: object specified more than once; extras ignored
-MainProgram.obj : error LNK2019: unresolved external symbol "public: void __thiscall Field::execute(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,class std::basic_ifstream<char,struct std::char_traits<char> > &)" (?execute@Field@@QAEXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV?$basic_ifstream@DU?$char_traits@D@std@@@3@@Z) referenced in function "public: void __thiscall MainField::run(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?run@MainField@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+MainProgram.obj : error LNK2019: unresolved external symbol "public: void __thiscall Field::execute(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,class std::basic_istream<char,struct std::char_traits<char> > &)" (?execute@Field@@QAEXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV?$basic_istream@DU?$char_traits@D@std@@@3@@Z) referenced in function "public: void __thiscall MainField::run(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?run@MainField@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
 Print_st.obj : error LNK2019: unresolved external symbol "public: __thiscall Field::Field(class Field *)" (??0Field@@QAE@PAV0@@Z) referenced in function "public: __thiscall Print_st::Print_st(class Field *)" (??0Print_st@@QAE@PAVField@@@Z)
 Source.obj : error LNK2001: unresolved external symbol "public: __thiscall Field::Field(class Field *)" (??0Field@@QAE@PAV0@@Z)
-C:\Users\User\source\repos\Iterpretator_just_a_example\Debug\Iterpretator_just_a_example.exe : fatal error LNK1120: 2 unresolved externals
+StatementCreator.obj : error LNK2001: unresolved external symbol "public: __thiscall Field::Field(class Field *)" (??0Field@@QAE@PAV0@@Z)
+Print_st.obj : error LNK2019: unresolved external symbol "public: int __thiscall Field::calculateExpression(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?calculateExpression@Field@@QAEHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: virtual void __thiscall Print_st::invoke(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,class std::basic_istream<char,struct std::char_traits<char> > &)" (?invoke@Print_st@@UAEXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV?$basic_istream@DU?$char_traits@D@std@@@3@@Z)
+C:\Users\User\source\repos\Iterpretator_just_a_example\Debug\Iterpretator_just_a_example.exe : fatal error LNK1120: 3 unresolved externals

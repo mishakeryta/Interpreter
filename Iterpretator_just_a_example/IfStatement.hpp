@@ -1,12 +1,19 @@
 #ifndef IF_STATEMENT_HPP
 #define IF_STATEMENT_HPP
+
 #include "Field.hpp"
 #include "Statement.hpp"
-class IfStatement:Field,Statement
+
+class IfStatement:public Field,public Statement
 {
-	Statement* create(Field* perent = nullptr) const  override;
-	void invoke(string& line, ifstream& ifstream) const override;
-
+public:
+	string findExspressionInScope(const string& line );
+	IfStatement(Field* parent) :Field{ parent } { };
+	Statement* create(Field* parent = nullptr) const  override;
+	void invoke(string& line, istream& ifstream)  override;
+	bool isEndScope(const string& line);
+	string createStringBeforeScope(istream& main_ifstream);
+private:
+	string arguments;
 };
-
 #endif

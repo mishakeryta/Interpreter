@@ -5,7 +5,7 @@ Statement* Print_st::create(Field* parent) const
 	return new Print_st{ parent };
 }
 
-void Print_st::invoke(string& line, ifstream& ifstream) const
+void Print_st::invoke(string& line, istream& ifstream) 
 {
 	int index = 0;
 	while (isblank(line.at(index)))
@@ -18,7 +18,11 @@ void Print_st::invoke(string& line, ifstream& ifstream) const
 	{
 		++index;
 	}
-	if (line[index] == ')') cout << "\n";
+	if (line[index] == ')') {
+		cout << "\n";
+		return;
+	}
+	
 	if (line[index] == '\"')
 	{
 		++index;
@@ -53,10 +57,17 @@ void Print_st::invoke(string& line, ifstream& ifstream) const
 		}
 	}
 	else
-	{/*
-		string expresion;
-		while(index < line.length())
-		*/
+	{
+		string expression;
+		while (index < line.length())
+		{
+			if (line[index] == ')') break;
+			expression += line[index];
+			if (!isblank(line[index]) && !isalnum(line[index])  && line[index] != '+' && line[index] != '-')
+				throw string{ "Error with print argument" };
+			++index;
+		}
+		std::cout << calculateExpression(expression);
 	}
 }
 

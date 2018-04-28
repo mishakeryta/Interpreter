@@ -10,7 +10,7 @@ class  Statement
 {
 public:
 	virtual Statement* create(Field* perent = nullptr) const = 0;
-	virtual void invoke(string& line,ifstream& ifstream) const = 0;
+	virtual void invoke(string& line,istream& ifstream) = 0;
 	virtual ~Statement() = default;
 };
 #endif
