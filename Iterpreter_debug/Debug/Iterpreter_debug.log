@@ -1,0 +1,22 @@
+﻿  Field.cpp
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\field.cpp(89): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\field.cpp(97): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\field.cpp(141): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\field.cpp(156): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\field.cpp(181): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\field.cpp(185): warning C4018: '<': signed/unsigned mismatch
+  IfStatement.cpp
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\ifstatement.cpp(34): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\ifstatement.cpp(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\ifstatement.cpp(61): warning C4018: '<': signed/unsigned mismatch
+  MainField.cpp
+  Operator.cpp
+  Print_st.cpp
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\print_st.cpp(17): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\print_st.cpp(29): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\print_st.cpp(37): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\source\repos\iterpreter_debug\iterpreter_debug\print_st.cpp(62): warning C4018: '<': signed/unsigned mismatch
+  Source.cpp
+  StatementCreator.cpp
+  Generating Code...
+  Iterpreter_debug.vcxproj -> C:\Users\User\source\repos\Iterpreter_debug\Debug\Iterpreter_debug.exe

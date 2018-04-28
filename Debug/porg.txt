@@ -1,0 +1,5 @@
+print("Just example!!!")
+print()
+int ab = 1999
+print("For robert   ")
+print(ab)
