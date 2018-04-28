@@ -2,17 +2,7 @@
 #define STATEMENT_CREATOR_HPP
 #include <string>
 #include <map>
-/*string may_exp = deleteAllBlanks(maybe_exp);
-istringstream in_exp{ may_exp };
-while (!in_exp.eof())
-{
 
-char switch_val = in_exp.peek();
-if (isdigit(switch_val))
-{
-
-}
-}*/
 class Statement;
 class Field;
 using namespace std;

@@ -1,0 +1,12 @@
+﻿  Field.cpp
+  IfStatement.cpp
+  MainField.cpp
+  Operator.cpp
+  Print_st.cpp
+  Source.cpp
+  StatementCreator.cpp
+  While_st.cpp
+  Generating code
+  All 729 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Iterpreter_debug.vcxproj -> C:\Users\User\source\repos\Iterpreter_debug\x64\Release\Iterpreter_debug.exe

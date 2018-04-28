@@ -1,0 +1,10 @@
+0x000002723d3e58b0 "      print(\"If is opened\")\n
+      print(\" var < 5\")\n      int val1 = var\n      while(val1>0)\n
+         print()\n\n"
+   print(\"First loop starts\")\n
+   print()\n   var = var + 1;\n
+   print(var)\n   if(var < 5)\n
+      print(\"If is opened\")\n      print(\" var < 5\")\n
+      int val1 = var\n      while(val1>0)\n         print()\n"
+
++		linesInStatements	"   print(\"First loop starts\")\n   print()\n   var = var + 1\n   print(var)\n   if(var < 5)\n      print(\"If is opened\")\n      print(\" var < 5\")\n      int val1 = var\n      while(val1>0)\n         print()\n"

@@ -1,8 +1,8 @@
 #include "StatementCreator.hpp"
 #include "Print_st.hpp"
 #include "IfStatement.hpp"
+#include "While_st.hpp"
 #include "StatementCreator.hpp"
-
 map<string, Statement*> StatementCreator::statements;
 
 bool StatementCreator::isStatementWith(const string& key)
@@ -28,5 +28,6 @@ void StatementCreator::initStatements()
 	{
 		statements["print"] = new Print_st{ nullptr };
 		statements["if"] = new IfStatement{ nullptr };
+		statements["while"] = new While_st{ nullptr };
 	}
 }

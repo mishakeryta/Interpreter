@@ -1,5 +1,9 @@
-print("Just example!!!")
-print()
-int ab = 1999
-print("For robert   ")
-print(ab)
+int a = 0
+int b = 100
+b = -100
+if(a>b())
+	print("a>b")
+}
+if(a<b) 
+	print("a<b")
+}

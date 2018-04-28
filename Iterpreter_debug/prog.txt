@@ -1,6 +1,24 @@
-if(0)
+print("Program started")
 print()
-print("Det")
-}
-print("End")
+int var = 0
+while(var<10)
+   print("First loop started")
+   print()
+   var = var + 1
+   print(var)
+   print()
+   if(var < 5)
+      print("If is opened  var = ")
+      print(var)
+      print()
+      int val1 = ((var+5)*5)/var
+      while(val1>0)
+         print()
+         print("Loop started val1 = ")
+         print(val1)
+         print()
+         val1 = val1 -1
+print("Program ended")
 
+	
+	

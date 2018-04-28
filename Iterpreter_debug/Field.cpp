@@ -30,13 +30,52 @@ void Field::execute(string& line, istream& ifstream_main)
 		string name_of_variable = getNameOfNewVar(line);
 		if (int_variables.find(name_of_variable) == int_variables.end())
 		{
-			int_variables[name_of_variable] = calculateExpression(findExpresionInAssigment(line));
+			int_variables[name_of_variable] = calculateExpression(findExpressionInAssigment(line));
 		}
 		else
 		{
 			throw string{ "Error:two variables with the same name!!!" };
 		}
 
+	}
+	else if (isAssigmentFormat(line))
+	{
+		istringstream inLine{ line };
+		string name_of_variable;
+		getline(inLine, name_of_variable, '=');
+		name_of_variable = deleteAllBlanks(name_of_variable);
+		setVariableInt(name_of_variable, calculateExpression(findExpressionInAssigment(line)));
+	}
+	else
+	{
+		throw string{ "Error: inappropeiate format of the row" };
+	}
+}
+
+int Field::countNumberOfParents() const
+{
+	int num = 0;
+	const Field* parentCrawler = this;
+	while (parentCrawler->parent)
+	{
+		parentCrawler = parentCrawler->parent;
+		++num;
+	}
+	return num;
+}
+void Field::setVariableInt(const string& name, int val)
+{
+	if (int_variables.find(name) != int_variables.end())
+	{
+		int_variables[name] = val;
+		return;
+	}
+	if (parent) {
+		parent->setVariableInt(name, val);
+	}
+	else
+	{
+		throw string{ "Error : no  such variable" };
 	}
 }
 
@@ -54,30 +93,108 @@ int Field::find_int_variable(const string& name)
 	throw string("Error: no shuch variable in the program");
 }
 
-void Field::setVariableInt(const string & name)
+int Field::convertStrToInt(const string& maybeVariableOrVal)
 {
-	//TO DO
-}
-/*int Field::convertStrToInt(const string& maybeVariableOrVal)
-{
-
-}*/
-
-int Field::calculateExpression(const string& maybe_exp)
-{
-	string may_exp = deleteAllBlanks(maybe_exp);
+	string maybe = deleteAllBlanks(maybeVariableOrVal);
 	try {
-		if (!isdigit(may_exp[0])) throw invalid_argument{ "" };
-		int val = std::atoi(may_exp.c_str());
+		if (!isdigit(maybe[0])) throw invalid_argument{ "" };
+		int val = std::atoi(maybe.c_str());
 		return val;
 	}
 	catch (invalid_argument exo) {
-		return find_int_variable(may_exp);
+		return find_int_variable(maybe);
 	}
 	catch (...)
 	{
 		throw;
 	}
+}
+
+int Field::calculateExpression(const string& maybe_exp)
+{
+	string may_exp = deleteAllBlanks(maybe_exp);
+	istringstream in_exp{ may_exp };
+	bool wasVarBefore = false;
+	bool wasOperatorBefore = false;
+	int  numberOfOpenScope = 0;
+	stack<int> variableStack;
+	stack<Operator> operatorStack;
+
+	while (!in_exp.eof())
+	{
+		Operator curOperator;
+		char switch_val = in_exp.peek();
+		if (switch_val == '+' || switch_val == '-')
+		{
+			in_exp.get();
+			if (!wasVarBefore)
+			{
+				variableStack.push(0);
+			}
+			curOperator = Operator(switch_val, numberOfOpenScope);
+		}
+		else if (switch_val == '*' || switch_val == '/' || switch_val == '>' || switch_val == '<')
+		{
+			in_exp.get();
+			if (!wasVarBefore)
+			{
+				throw string{ "Error: bad expression format" };
+			}
+			curOperator = Operator(switch_val, numberOfOpenScope);
+		}
+		else if (isalnum(switch_val))
+		{
+			string  varOrNum;
+			char tmp;
+			while (!isExpressionSymbol(tmp = in_exp.peek()))
+			{
+				in_exp.get();
+				if (in_exp.eof()) break;
+				varOrNum += tmp;
+			}
+			variableStack.push(convertStrToInt(varOrNum));
+			wasVarBefore = true;
+		}
+		else if (switch_val == ')')
+		{
+			--numberOfOpenScope;
+			in_exp.get();
+		}
+		else if (switch_val == '(')
+		{
+			++numberOfOpenScope;
+			in_exp.get();
+		}
+		else if (switch_val == -1)
+		{
+			break;
+		}
+		else
+		{
+			throw string{ "Error: unknown symbol in expression" };
+		}
+		if (!curOperator.isEmpty())
+		{
+			while (!operatorStack.empty() && curOperator <= operatorStack.top())
+			{
+				calculateOne(operatorStack, variableStack);
+			}
+			operatorStack.push(curOperator);
+			wasVarBefore = false;
+		}
+	}
+	if (numberOfOpenScope) throw string("Error: to many scopes");
+	while (!operatorStack.empty())
+	{
+		calculateOne(operatorStack, variableStack);
+	}
+	return variableStack.top();
+}
+
+bool Field::isExpressionSymbol(char symbol)
+{
+	return symbol == ')' || symbol == '(' || symbol == '+' || symbol == '-' ||
+		symbol == '/' || symbol == '*' || symbol == '>' || symbol == '<';
 }
 
 bool Field::isStatementFormat(const string& line) const
@@ -134,6 +251,14 @@ bool Field::isNewVarFormat(const string& line) const
 	return true;
 }
 
+bool Field::isAssigmentFormat(const string & line) const
+{
+	istringstream inLine{ line };
+	string variable;
+	getline(inLine, variable, '=');
+	return variable.length() != line.length();
+}
+
 
 string Field::deleteAllBlanks(const string& line) const
 {
@@ -176,7 +301,7 @@ string Field::getNameOfNewVar(const string& line) const
 
 }
 
-string Field::findExpresionInAssigment(const string& line) {
+string Field::findExpressionInAssigment(const string& line) {
 	int index = 0;
 	while (index < line.length()) {
 		if (line[index] == '=') {
@@ -204,4 +329,14 @@ bool Field::isEmptyOrWithAllBlanks(const string& line) const
 	return true;
 
 
+}
+
+void Field::calculateOne(stack<Operator>& operators, stack<int>& variables)
+{
+	int val2 = variables.top();
+	variables.pop();
+	int val1 = variables.top();
+	variables.pop();
+	variables.push(operators.top().calculate(val1, val2));
+	operators.pop();
 }

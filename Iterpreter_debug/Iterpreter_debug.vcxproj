@@ -122,6 +122,7 @@
     <ClCompile Include="Print_st.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="StatementCreator.cpp" />
+    <ClCompile Include="While_st.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Field.hpp" />
@@ -131,6 +132,7 @@
     <ClInclude Include="Print_st.hpp" />
     <ClInclude Include="Satement.hpp" />
     <ClInclude Include="StatementCreator.hpp" />
+    <ClInclude Include="While_st.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

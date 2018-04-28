@@ -11,8 +11,8 @@ public:
 	IfStatement(Field* parent) :Field{ parent } { };
 	Statement* create(Field* parent = nullptr) const  override;
 	void invoke(string& line, istream& ifstream)  override;
-	bool isEndScope(const string& line);
-	string createStringBeforeScope(istream& main_ifstream);
+	bool isInScope(const string& line,int countIfParents);
+	string createStringInScope(istream& main_ifstream);
 private:
 	string arguments;
 };
